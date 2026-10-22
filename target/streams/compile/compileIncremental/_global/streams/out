@@ -1,0 +1,6 @@
+[0m[[0m[0mdebug[0m] [0m[0m[zinc] IncrementalCompile -----------[0m
+[0m[[0m[0mdebug[0m] [0m[0mIncrementalCompile.incrementalCompile[0m
+[0m[[0m[0mdebug[0m] [0m[0mprevious = Stamps for: 19 products, 8 sources, 20 libraries[0m
+[0m[[0m[0mdebug[0m] [0m[0mcurrent source = Set(${BASE}/src/main/scala/service/service.scala, ${BASE}/src/main/scala/controller/httpCont.scala, ${BASE}/src/main/scala/DTO/UserDTO.scala, ${BASE}/src/main/scala/models/User.scala, ${BASE}/src/main/scala/db/Repository.scala, ${BASE}/src/main/scala/Main.scala, ${BASE}/src/main/scala/DTO/LinksDTO.scala, ${BASE}/src/main/scala/db/DataBase.scala)[0m
+[0m[[0m[0mdebug[0m] [0m[0m> initialChanges = InitialChanges(Changes(added = Set(), removed = Set(), changed = Set(), unmodified = ...),Set(),Set(),API Changes: Set())[0m
+[0m[[0m[0mdebug[0m] [0m[0mNo changes[0m

@@ -1,0 +1,12 @@
+[0m[[0m[31merror[0m] [0m[0mjava.net.ConnectException: Connection refused[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.pollConnect(Native Method)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.Net.pollConnectNow(Net.java:682)[0m
+[0m[[0m[31merror[0m] [0m[0m	at java.base/sun.nio.ch.SocketChannelImpl.finishConnect(SocketChannelImpl.java:1060)[0m
+[0m[[0m[31merror[0m] [0m[0m	at fs2.io.net.SelectingIpSocketsProvider.$anonfun$2$$anonfun$2$$anonfun$1$$anonfun$1(SelectingIpSocketsProvider.scala:64)[0m
+[0m[[0m[31merror[0m] [0m[0m	at delay @ fs2.io.net.SelectingIpSocketsProvider.$anonfun$2$$anonfun$2$$anonfun$1(SelectingIpSocketsProvider.scala:64)[0m
+[0m[[0m[31merror[0m] [0m[0m	at select @ fs2.io.net.SelectingIpSocketsProvider.$anonfun$2$$anonfun$2$$anonfun$1(SelectingIpSocketsProvider.scala:62)[0m
+[0m[[0m[31merror[0m] [0m[0m	at untilM_$extension @ fs2.io.net.SelectingIpSocketsProvider.$anonfun$2$$anonfun$2$$anonfun$1(SelectingIpSocketsProvider.scala:64)[0m
+[0m[[0m[31merror[0m] [0m[0m	at unlessA$extension @ fs2.io.net.SelectingIpSocketsProvider.$anonfun$2$$anonfun$2(SelectingIpSocketsProvider.scala:65)[0m
+[0m[[0m[31merror[0m] [0m[0m	at delay @ fs2.io.net.SelectingIpSocketsProvider.$anonfun$2(SelectingIpSocketsProvider.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0m	at flatMap @ fs2.io.net.SelectingIpSocketsProvider.$anonfun$2(SelectingIpSocketsProvider.scala:60)[0m
+[0m[[0m[31merror[0m] [0m[0m(Compile / [31mrun[0m) java.net.ConnectException: Connection refused[0m

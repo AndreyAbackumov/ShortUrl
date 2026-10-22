@@ -1,0 +1,13 @@
+[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(test.MySuite, org.scalatest.tools.Framework$$anon$1@1784537e, false, [SuiteSelector])[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mMySuite:[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mPOST /api/addUser[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return 201 Created for a new user[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return 409 Conflict for a duplicate username[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32m- should return 400 Bad Request for an invalid username[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 4 seconds, 747 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 3[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 3, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
+[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	test.MySuite[0m

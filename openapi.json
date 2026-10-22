@@ -1,0 +1,331 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Сокращатель ссылок на Scala",
+    "version": "0.0.1"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080/api/",
+      "description": "Dev server"
+    }
+  ],
+  "paths": {
+    "/addUser": {
+      "post": {
+        "summary": "Метод добавления пользователя",
+        "tags": [
+          "User"
+        ],
+        "operationId": "createUser",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/User"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Пользователь добавлен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserAnswer"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Логин не прошел валидацию",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "409": {
+            "description": "Пользователь уже есть",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addUrl": {
+      "post": {
+        "summary": "Метод добавления ссылки",
+        "tags": [
+          "Links"
+        ],
+        "operationId": "createUrl",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Url"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Ссылка сокращена",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ShortUrl"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Логин не прошел валидацию",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пользователя не существует",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getLinks": {
+      "get": {
+        "summary": "Метод получения списка пар. Короткий url и url у конкретного пользователя",
+        "tags": [
+          "Links"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getUrls",
+        "responses": {
+          "200": {
+            "description": "Список получен",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ListUrls"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Логин не прошел валидацию или логин не был передан",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пользователя не существует",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/getPage": {
+      "get": {
+        "summary": "Перенаправление по короткой ссылке",
+        "tags": [
+          "Links"
+        ],
+        "parameters": [
+          {
+            "name": "username",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "shortUrl",
+            "in": "query",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getPage",
+        "responses": {
+          "303": {
+            "description": "Перенаправление по оригинальной ссылке",
+            "headers": {
+              "Location": {
+                "description": "Оригинальный URL, куда перенаправляется клиент",
+                "schema": {
+                  "type": "string",
+                  "format": "uri",
+                  "example": "https://example.com/original"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Не прошла валидация или параметры не были переданы",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Пользователя не существует",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "User": {
+        "type": "object",
+        "required": [
+          "username"
+        ],
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "qwerty"
+          }
+        }
+      },
+      "UserAnswer": {
+        "type": "object",
+        "required": [
+          "message"
+        ],
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "User Added"
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "message"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "enum": [
+              "USERNAME_TAKEN",
+              "INVALID_FORMAT",
+              "USER_NOT_FOUND",
+              "MISSING_PARAMS"
+            ]
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "Url": {
+        "type": "object",
+        "required": [
+          "username",
+          "url"
+        ],
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "qwerty"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://www.google.com/"
+          }
+        }
+      },
+      "ShortUrl": {
+        "type": "object",
+        "required": [
+          "shortUrl"
+        ],
+        "properties": {
+          "shortUrl": {
+            "type": "string",
+            "example": "ojZa3Q"
+          }
+        }
+      },
+      "UrlAns": {
+        "type": "object",
+        "required": [
+          "shortUrl",
+          "url"
+        ],
+        "properties": {
+          "shortUrl": {
+            "type": "string",
+            "example": "ojZa3Q"
+          },
+          "url": {
+            "type": "string",
+            "example": "https://www.google.com/"
+          }
+        }
+      },
+      "ListUrls": {
+        "type": "array",
+        "items": {
+          "$ref": "#/components/schemas/UrlAns"
+        }
+      }
+    }
+  }
+}
